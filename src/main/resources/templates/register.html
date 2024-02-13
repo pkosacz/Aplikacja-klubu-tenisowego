@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <!-- Dodane style dla tła -->
+    <style>
+        body {
+            background-color: #f0f0f0; /* Jasnoszare tło */
+            background-image: url("/images/tenis.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+
+        }
+
+        .navbar {
+            background-color: #2c3e50; /* Ciemnoniebieski kolor paska nawigacyjnego */
+            color: white;
+        }
+
+        footer {
+            background-color: #2c3e50; /* Ciemnoniebieski kolor paska na dole strony */
+            color: white;
+            text-align: center; /* Wyśrodkowanie tekstu */
+            padding: 10px 0; /* Dodałem padding */
+        }
+
+        /* Nowe style dla paska na górze strony */
+        .top-bar {
+            background-color: #2980b9; /* Jasnoniebieski kolor paska na górze strony */
+            color: white;
+            padding: 15px 0; /* Zmniejszony padding */
+            text-align: center; /* Wyśrodkowanie tekstu */
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Dodane wyśrodkowanie wertykalne */
+        }
+
+        /* Nowe style dla przycisków na górze strony */
+        .nav-links {
+            display: flex;
+            justify-content: space-around; /* Równe rozmieszczenie przycisków */
+            width: 100%; /* Pełna szerokość dostępna dla przycisków */
+        }
+
+        .nav-links a {
+            color: white;
+        }
+
+        /* Nowe style dla szerszych pól i formularza */
+        .login-form {
+            max-width: 400px; /* Maksymalna szerokość formularza */
+            width: 100%;
+            margin: 0 auto; /* Wyśrodkowanie formularza */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Nowe style dla logo centralnie na środku nad menu logowania */
+        .logo-container {
+            text-align: center;
+            margin: 20px 0; /* Dodany margines */
+        }
+
+        .logo-container img {
+            max-width: 300px; /* Dostosowany rozmiar logo */
+            height: auto;
+        }
+
+        /* Nowe style dla przesunięcia menu logowania pod logo */
+        .login-container {
+            text-align: center;
+            margin-top: -30px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- Top Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">KLUB TENISOWY P&M</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/korty}">Korty tenisowe</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Logowanie</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Rejestracja
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container"> <!-- Dodany kontener dla głównej części strony -->
+    <div class="logo-container">
+        <img src="/images/logo.png" alt="Logo" />
+    </div>
+
+    <div class="register-container"> <!-- Dodany kontener dla menu rejestracji -->
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mt-5"> <!-- Szerokość i przesunięcie formularza -->
+                <form method="post" th:action="@{/register}" class="register-form"> <!-- Dodana klasa register-form -->
+                    <div class="form-group">
+                        <label style="color: white" for="username">Nazwa użytkownika:</label>
+                        <input id="username" type="text" placeholder="Wprowadź nazwę użytkownika" autocomplete="off" class="form-control" name="username"/>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: white" for="password">Hasło:</label>
+                        <input id="password" type="password" placeholder="Wprowadź hasło" autocomplete="off" class="form-control" name="password"/>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: white" for="confirmPassword">Potwierdź hasło:</label>
+                        <input id="confirmPassword" type="password" placeholder="Potwierdź hasło" autocomplete="off" class="form-control" name="confirmPassword"/>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" value="Register" disabled>Zarejestruj</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
